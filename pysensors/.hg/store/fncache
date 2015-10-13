@@ -1,0 +1,16 @@
+data/setup.py.i
+data/doc/conf.py.i
+data/sensors/stdc.py.i
+data/sensors/api4.py.i
+data/doc/Makefile.i
+data/.hgignore.i
+data/sensors/api3.py.i
+data/doc/index.txt.i
+data/MANIFEST.in.i
+data/.hgtags.i
+data/README.rst.i
+data/doc/make.bat.i
+data/sensors/cli.py.i
+data/sensors/common.py.i
+data/doc/index.rst.i
+data/sensors/__init__.py.i

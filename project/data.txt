@@ -1,0 +1,44 @@
+
+2015-10-12 18:38:28.593849
+Record ID | Sensor Name | Sensor Group | Sensor Units | Sensor Reading
+64 | POST Error | System Firmware Progress | N/A | N/A
+112 | Memory ECC | Memory | N/A | N/A
+160 | ACPI State | System ACPI Power State | N/A | 'S0/G0'
+208 | PCI Reset | Module/Board | N/A | 'OK'
+256 | CPU0 Fan R0 | Fan | RPM | 10822.510823
+320 | CPU1 Fan R0 | Fan | RPM | 10822.510823
+384 | Rear Sys Fan1 | Fan | RPM | 8503.401361
+448 | Front Sys Fan1 | Fan | RPM | 8818.342152
+512 | System 12V | Voltage | V | 11.984000
+576 | System 5V | Voltage | V | 5.054400
+640 | System 3.3V | Voltage | V | 3.286000
+704 | System AUX 3.3V | Voltage | V | 3.270500
+768 | System AUX 2.5V | Voltage | V | 2.492100
+832 | System AUX 1.8V | Voltage | V | 1.822800
+896 | System AUX 1.2V | Voltage | V | 1.215200
+960 | System -12V | Voltage | V | -14.400000
+1024 | CPU0 VCCP | Voltage | V | 1.068200
+1088 | CPU1 VCCP | Voltage | V | 1.078000
+1152 | CPU0 Dmn 0 Temp | Temperature | C | 31.000000
+1216 | CPU0 Dmn 1 Temp | Temperature | C | 30.000000
+1280 | CPU1 Dmn 0 Temp | Temperature | C | 32.000000
+1344 | CPU1 Dmn 1 Temp | Temperature | C | 32.000000
+1408 | DIMM Rear Temp | Temperature | C | 0.000000
+1472 | Inlet Amb Temp | Temperature | C | 18.500000
+1536 | PCI Amb Temp | Temperature | C | 0.000000
+1600 | Therm-Trip0 | Processor | N/A | N/A
+1648 | Therm-Trip1 | Processor | N/A | N/A
+1696 | CPU Prochot0 | Temperature | N/A | 'Limit Not Exceeded'
+1744 | CPU Prochot1 | Temperature | N/A | 'Limit Not Exceeded'
+1792 | CPU VRM hot0 | Temperature | N/A | 'Limit Not Exceeded'
+1840 | CPU VRM hot1 | Temperature | N/A | 'Limit Not Exceeded'
+1888 | System Reset | Button/Switch | N/A | 'State Deasserted'
+1936 | NMI | Button/Switch | N/A | 'State Deasserted'
+1984 | Identify | Button/Switch | N/A | 'State Deasserted'
+2032 | CPU0 IERR | Processor | N/A | 'State Deasserted'
+2080 | CPU1 IERR | Processor | N/A | 'State Deasserted'
+2128 | Power Button | Button/Switch | N/A | 'State Deasserted'
+2176 | CPU Socket 0 | Processor | N/A | 'Device Inserted/Device Present'
+2224 | CPU Socket 1 | Processor | N/A | 'Device Inserted/Device Present'
+2272 | LO100 Present | Add In Card | N/A | 'Device Removed/Device Absent'
+3088 | Watchdog | Watchdog 2 | N/A | N/A

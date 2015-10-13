@@ -1,0 +1,5 @@
+glob:*~
+glob:*.pyc
+syntax: glob
+MANIFEST
+doc/_build

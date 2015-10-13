@@ -1,0 +1,466 @@
+cputemp-1.0.1 Change Log
+
+This version gives the following bug fixes reported from users:
+
+	-Fix break in hardware check (Thanks Mike Beasley)
+	-Fix temp reporting for specific hardware (Thanks markino)
+
+diff from cputemp-1.0
+27c27
+< version = "1.0.1"
+---
+> version = "1.0"
+63c63
+<       elif os.path.exists("/proc/acpi/thermal_zone/THRM/temperature") == True :
+---
+>       elif hardware == 0 and os.path.exists("/proc/acpi/thermal_zone/THRM/temperature") == True :
+66c66
+<       elif os.path.exists("/proc/acpi/thermal_zone/THR1/temperature") == True :
+---
+>       elif hardware == 0 and os.path.exists("/proc/acpi/thermal_zone/THR1/temperature") == True :
+95d94
+<               temp = str(float(temp)/10.0)
+200c199
+<                temp = float(temp)
+---
+>                temp = int(temp)
+
+---------------------------
+cputemp-1.0 Change Log
+
+This version features a complete rewrite.  All the same functionality and interface is intact, but code is now object oriented to better maintenance and branch into other projects.
+
+New features:
+	-Support for newer linux kernels (Fedora 16+)
+	-Installer can now specify install path and gives usage
+	-cputemp now gives option for Kelvin degree
+
+***Diff is not provided for this version since the code was entirely rewritten
+
+----------------------------
+cputemp-0.2.4 Change Log
+
+A few bug fixes and enhancements:
+	-Time is now more accurately reported, sleep is no longer called.
+	-Averages are more accurately calculated.
+	-Updates more often than once per second.
+	-Faster startup time by changing logic on ACPI file stat.
+	-Fixed seconds output and another typo.
+
+----------------------------
+diff from cputemp-0.2.3
+
+23c23
+< import time, sys, os, datetime, getopt
+---
+> import time, sys, datetime, getopt, os
+27c27
+< version = "0.2.3"
+---
+> version = "0.2.4"
+28a29,30
+> #Leave seconds and minutes at zero, seclast, seccount, and tick are used for accurate time tracking.  The poorly named "ticker" is used to keep track of how many runs.
+> bseconds = 0
+30a33,37
+> seclast = 0
+> seccount = 0
+> tick = 0
+> ticker = 0
+> #tmax, tmin, tsum, and tavg are used to calculate end totals, tmin assumes starting temp below 1000 degrees 
+34a42
+> #degree will end up having value of Celsius or Fahrenheit
+35a44
+> #/var/log/cputemp.log gets opened.  This is created during install process by Setup.py or rpm.
+36a46
+> #Get current date and time for the log
+38c48
+< tick = 0
+---
+> #Assume hardware is unsupported until proven otherwise
+39a50
+> #Usage information is not given by default
+40a52
+> #Run specifies a time limit (triggered by -s or -a), runtime specifices how long to run.
+42a55
+> #ver specifies whether or not to exit after displaying version
+43a57
+> #check is used to bypass argument parsing if we don't recognize an argument
+44a59
+> #set prevtemp to 21 to assume our starting point will be above 20 degrees
+45a61
+> #avg affects what we will display, and defaults to runtime of 5, and degree of Fahrenheit
+123c139
+< while os.path.exists("/proc/acpi/thermal_zone/THRM/temperature") == True and hardware == 0 :
+---
+> while hardware == 0 and os.path.exists("/proc/acpi/thermal_zone/THRM/temperature") == True :
+127c143
+< while os.path.exists("/proc/acpi/thermal_zone/THR1/temperature") == True and hardware == 0 :
+---
+> while hardware == 0 and os.path.exists("/proc/acpi/thermal_zone/THR1/temperature") == True :
+155a172,175
+> 
+> #Set bseconds to current time for a base reference
+> 
+> bseconds = int(time.time())
+157c177
+< #Display current temperature, refreshing every second
+---
+> #Display current temperature, refreshing continually
+169,172c189,195
+<        seconds = seconds + 1
+<        minutes = tick / 60
+<        if seconds == 60:
+<                seconds = 0
+---
+>        tick = int(time.time()) - int(bseconds)
+>        seccount = int(seccount) + int(tick) - int(seclast)
+>        seclast = tick
+>        if seccount >= 60:
+>                minutes = int(minutes) + 1
+>                seccount = int(seccount) - 60
+>        seconds = int(tick) - (60 * int(minutes))
+183,185c206,208
+<                       print "0" ,
+<               print seconds , ")" ,
+<        tick = tick + 1
+---
+>                       print "0" + str(seconds) , ")" ,
+>               else :
+>                       print seconds , ")" ,
+190,191c213,215
+<        tsum = tsum + temp
+<        if run == 1 and runtime == tick:
+---
+>        tsum = float(tsum) + float(temp)
+>        ticker = int(ticker) + 1
+>        if run == 1 and runtime <= seccount:
+204,205c228,229
+< tavg = tsum / tick
+< tavg = round (tavg, 1)
+---
+> tavg = tsum / ticker
+> tavg = round(tavg, 1)
+237c261
+< templog.write ("Avergage temperature was ")
+---
+> templog.write ("Average temperature was ")
+23c23
+< import time, sys, os, datetime, getopt
+---
+> import time, sys, datetime, getopt, os
+27c27
+< version = "0.2.3"
+---
+> version = "0.2.4"
+28a29,30
+> #Leave seconds and minutes at zero, seclast, seccount, and tick are used for accurate time tracking.  The poorly named "ticker" is used to keep track of how many runs.
+> bseconds = 0
+30a33,37
+> seclast = 0
+> seccount = 0
+> tick = 0
+> ticker = 0
+> #tmax, tmin, tsum, and tavg are used to calculate end totals, tmin assumes starting temp below 1000 degrees 
+34a42
+> #degree will end up having value of Celsius or Fahrenheit
+35a44
+> #/var/log/cputemp.log gets opened.  This is created during install process by Setup.py or rpm.
+36a46
+> #Get current date and time for the log
+38c48
+< tick = 0
+---
+> #Assume hardware is unsupported until proven otherwise
+39a50
+> #Usage information is not given by default
+40a52
+> #Run specifies a time limit (triggered by -s or -a), runtime specifices how long to run.
+42a55
+> #ver specifies whether or not to exit after displaying version
+43a57
+> #check is used to bypass argument parsing if we don't recognize an argument
+44a59
+> #set prevtemp to 21 to assume our starting point will be above 20 degrees
+45a61
+> #avg affects what we will display, and defaults to runtime of 5, and degree of Fahrenheit
+123c139
+< while os.path.exists("/proc/acpi/thermal_zone/THRM/temperature") == True and hardware == 0 :
+---
+> while hardware == 0 and os.path.exists("/proc/acpi/thermal_zone/THRM/temperature") == True :
+127c143
+< while os.path.exists("/proc/acpi/thermal_zone/THR1/temperature") == True and hardware == 0 :
+---
+> while hardware == 0 and os.path.exists("/proc/acpi/thermal_zone/THR1/temperature") == True :
+155a172,175
+> 
+> #Set bseconds to current time for a base reference
+> 
+> bseconds = int(time.time())
+157c177
+< #Display current temperature, refreshing every second
+---
+> #Display current temperature, refreshing continually
+169,172c189,195
+<        seconds = seconds + 1
+<        minutes = tick / 60
+<        if seconds == 60:
+<                seconds = 0
+---
+>        tick = int(time.time()) - int(bseconds)
+>        seccount = int(seccount) + int(tick) - int(seclast)
+>        seclast = tick
+>        if seccount >= 60:
+>                minutes = int(minutes) + 1
+>                seccount = int(seccount) - 60
+>        seconds = int(tick) - (60 * int(minutes))
+183,185c206,208
+<                       print "0" ,
+<               print seconds , ")" ,
+<        tick = tick + 1
+---
+>                       print "0" + str(seconds) , ")" ,
+>               else :
+>                       print seconds , ")" ,
+190,191c213,215
+<        tsum = tsum + temp
+<        if run == 1 and runtime == tick:
+---
+>        tsum = float(tsum) + float(temp)
+>        ticker = int(ticker) + 1
+>        if run == 1 and runtime <= seccount:
+204,205c228,229
+< tavg = tsum / tick
+< tavg = round (tavg, 1)
+---
+> tavg = tsum / ticker
+> tavg = round(tavg, 1)
+237c261
+< templog.write ("Avergage temperature was ")
+---
+> templog.write ("Average temperature was ")
+
+
+cputemp-0.2.3 Change Log
+
+Many new features:
+
+  Command Line arguments:
+	-h / --help
+	-V / --version
+	-s / --seconds
+	-a / --average
+	-F / --fahrenheit
+	-C / --celsius
+
+Users can now select their degree (Fahrenheit, Celsius), time in seconds to run the program, and whether or not to just display an average temperature.
+
+Average temperature over the run period is now included in the results and logged.
+
+This program is also more robust in covering a wider range of temperatures.  Previous versions may have seen odd results in the unlikely event that the processor was over 140 degrees or below 14 degrees Celsius, where cputemp reads from /sys.  This version now should cover even these unlikely events.	
+
+I have also fixed an issue with the Setup.py not properly recognizing an actual root user.  This should also work now.
+
+Please read the release notes for license info.  Enjoy!
+
+---------------------
+
+diff from cputemp-0.2.2
+
+5c5
+< #       Copyright 2008 Scott Williams (vwbusguy@fedoraproject.org)
+---
+> #       Copyright 2008, 2009, 2010 Scott Williams (vwbusguy@fedoraproject.org)
+21,24c21
+< import time
+< import sys
+< import os
+< import datetime
+---
+> #	Full GPLv3 license is included in Release Notes
+26c23,27
+< version = "0.2.2"
+---
+> import time, sys, os, datetime, getopt
+> 
+> #identify initial values for variables, all global
+> 
+> version = "0.2.3"
+31a33,34
+> tsum = 0
+> tavg = 0
+36a40,76
+> help = 0
+> run = 0
+> runtime = 5
+> ver = 0
+> check = 0
+> prevtemp = 21
+> avg = 0
+> 
+> #Check our arguments, make sure we understand them all
+> 
+> try:
+> 	opts, args = getopt.getopt(sys.argv[1:], "aCFs:hV", ["average","celsius", "fahrenheit", "seconds=", "help", "version"])
+> except getopt.GetoptError:
+> 	help = 1
+> 	check = 1
+> 	exitmsg = "Argument not recognized."
+> 
+> #Put the arguments to work
+> 
+> while check == 0:
+> 	for opt, arg in opts:
+> 		if opt in ("-h", "--help"):
+> 			help = 1
+> 		if opt in ("-C", "--celsius"):
+> 			degree = "Celsius"
+> 		if opt in ("-F", "--fahrenheit"):
+> 			degree = "Fahrenheit"
+> 		if opt in ("-V", "--version"):
+> 			ver = 1
+> 		if opt in ("-s", "--seconds"):
+> 			run = 1
+> 			runtime = arg
+> 		if opt in ("-a", "--average"):
+> 			avg = 1
+> 	break
+> 
+> #Make sure if -s is used, we can use it.
+37a78,89
+> try:
+> 	runtime = int(runtime)
+> except ValueError:
+> 	runtime = -1
+> 	
+> while runtime < 1:
+> 	exitmsg = "Seconds must be defined as an integer greater than zero."
+> 	help = 1
+> 	break
+> 	
+> #Display current version.  If -V is given, exit
+> 	
+39a92,113
+> while ver == 1:
+> 	sys.exit()
+> 
+> #Usage information
+> 
+> while help == 1:
+> 	print "Usage information:\n"
+> 	print "-h / --help               Display this usage info."
+> 	print "-V / --version            Display cputemp version and exit"
+> 	print "-s / --seconds [seconds]  Run cputemp for specified number of seconds"
+> 	print "-C / --celsius            Display temperature in Celsius"
+> 	print "-F / --fahrenheit         Display temperature in Fahrenheit\n"
+> 	print "-a / --average            Displays only the results (Use with -s and -F/-C)"
+> 	
+> #If we got here without calling -h, tell why.
+> 
+> 	if check == 1 or run == 1:
+> 		print exitmsg	
+> 	sys.exit()
+> 	
+> #Find out where the system reports it's ACPI data.  Newer linux systems use /sys, older use /proc
+> 
+55a130,131
+> #Create case for unsupported system
+> 
+59a136,137
+> #Query user for Celsius or Fahrenheit
+> 
+60a139,141
+> 	if avg == 1:
+> 		degree = "Fahrenheit"
+> 		break
+70c151,156
+< print("Press Ctrl+C to exit")
+---
+> 
+> while avg == 0 :
+> 	print("Press Ctrl+C to exit")
+> 	break
+> 	
+> #Display current temperature, refreshing every second
+83d168
+< 	 tick = tick + 1
+88c173
+< 	 if temp < 14 :
+---
+> 	 if prevtemp > 20 and temp < 18 :
+89a175
+> 	 prevtemp = temp
+92,96c178,184
+< 	 print "\rCPU Temperature: " , temp , degree ,
+< 	 print "(Time Running: " , minutes , ":" , 
+< 	 if seconds < 10:
+< 		  print "0" ,
+< 	 print seconds , ")" ,
+---
+> 	 if avg == 0 :
+> 	 	print "\rCPU Temperature: " , temp , degree ,
+> 	 	print "(Time Running: " , minutes , ":" , 
+> 	 	if seconds < 10:
+> 			print "0" ,
+> 			print seconds , ")" ,
+> 	 tick = tick + 1
+100a189,191
+> 	 tsum = tsum + temp
+> 	 if run == 1 and runtime == tick:
+> 		break 	
+102a194,196
+> 
+> #When Ctrl-C is pressed, show summary data
+> 
+105,106c199,212
+< print "\nHighest recorded temperature was",tmax,"degrees" , degree , "."
+< print "Lowest recorded temperature was",tmin,"degrees" , degree , "."
+---
+> 	
+> 
+> #Display our results
+> 
+> tavg = tsum / tick
+> tavg = round (tavg, 1)
+> while avg == 0 :	
+> 	print "\n\nHighest recorded temperature was",tmax,"degrees" , degree , "."
+> 	print "Lowest recorded temperature was",tmin,"degrees" , degree , "."
+> 	break
+> print "Average temperature was",tavg,"degrees" , degree, ".\n"
+> 
+> #Update /var/log/cputemp.log with session data
+> 
+114a221,223
+> while seconds < 10:
+> 	templog.write ("0")
+> 	break
+126a236,240
+> templog.write ("Avergage temperature was ")
+> templog.write (str(tavg))
+> templog.write (" degrees ")
+> templog.write (str(degree))
+> templog.write (".\n")
+128c242,244
+< print "Log has been updated."
+---
+> while avg == 0 :
+> 	print "Log has been updated."
+> 	break
+
+
+-----------
+cputemp 0.2.2 Change Log:
+
+This release does not include any new functionality but contains a necessary fix affecting 0.2.1 for systems that have temperature monitoring through /sys.  This is a recommended upgrade for all 0.2.1 users.
+
+----------------------
+
+diff from cputemp-0.2.1:
+
+26c26
+< version = "0.2.2"
+---
+> version = "0.2.1"
+88,89d87
+<        if temp < 14 :
+<               temp = temp * 10
+
