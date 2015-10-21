@@ -1,44 +1,196 @@
 
-2015-10-12 18:38:28.593849
+2015-10-22 02:39:07.817989
 Record ID | Sensor Name | Sensor Group | Sensor Units | Sensor Reading
-64 | POST Error | System Firmware Progress | N/A | N/A
-112 | Memory ECC | Memory | N/A | N/A
-160 | ACPI State | System ACPI Power State | N/A | 'S0/G0'
-208 | PCI Reset | Module/Board | N/A | 'OK'
-256 | CPU0 Fan R0 | Fan | RPM | 10822.510823
-320 | CPU1 Fan R0 | Fan | RPM | 10822.510823
-384 | Rear Sys Fan1 | Fan | RPM | 8503.401361
-448 | Front Sys Fan1 | Fan | RPM | 8818.342152
-512 | System 12V | Voltage | V | 11.984000
-576 | System 5V | Voltage | V | 5.054400
-640 | System 3.3V | Voltage | V | 3.286000
-704 | System AUX 3.3V | Voltage | V | 3.270500
-768 | System AUX 2.5V | Voltage | V | 2.492100
-832 | System AUX 1.8V | Voltage | V | 1.822800
-896 | System AUX 1.2V | Voltage | V | 1.215200
-960 | System -12V | Voltage | V | -14.400000
-1024 | CPU0 VCCP | Voltage | V | 1.068200
-1088 | CPU1 VCCP | Voltage | V | 1.078000
-1152 | CPU0 Dmn 0 Temp | Temperature | C | 31.000000
-1216 | CPU0 Dmn 1 Temp | Temperature | C | 30.000000
-1280 | CPU1 Dmn 0 Temp | Temperature | C | 32.000000
-1344 | CPU1 Dmn 1 Temp | Temperature | C | 32.000000
-1408 | DIMM Rear Temp | Temperature | C | 0.000000
-1472 | Inlet Amb Temp | Temperature | C | 18.500000
-1536 | PCI Amb Temp | Temperature | C | 0.000000
-1600 | Therm-Trip0 | Processor | N/A | N/A
-1648 | Therm-Trip1 | Processor | N/A | N/A
-1696 | CPU Prochot0 | Temperature | N/A | 'Limit Not Exceeded'
-1744 | CPU Prochot1 | Temperature | N/A | 'Limit Not Exceeded'
-1792 | CPU VRM hot0 | Temperature | N/A | 'Limit Not Exceeded'
-1840 | CPU VRM hot1 | Temperature | N/A | 'Limit Not Exceeded'
-1888 | System Reset | Button/Switch | N/A | 'State Deasserted'
-1936 | NMI | Button/Switch | N/A | 'State Deasserted'
-1984 | Identify | Button/Switch | N/A | 'State Deasserted'
-2032 | CPU0 IERR | Processor | N/A | 'State Deasserted'
-2080 | CPU1 IERR | Processor | N/A | 'State Deasserted'
-2128 | Power Button | Button/Switch | N/A | 'State Deasserted'
-2176 | CPU Socket 0 | Processor | N/A | 'Device Inserted/Device Present'
-2224 | CPU Socket 1 | Processor | N/A | 'Device Inserted/Device Present'
-2272 | LO100 Present | Add In Card | N/A | 'Device Removed/Device Absent'
-3088 | Watchdog | Watchdog 2 | N/A | N/A
+1 | FP_ID_LED | Platform Alert | N/A | 'OEM Event = 0041h'
+2 | BIOS_POST_CMPLT | Entity Presence | N/A | 'Device Inserted/Device Present'
+3 | P_CATERR_N | Processor | N/A | 'Predictive Failure deasserted'
+4 | RISER1_CNIC_PRS | Entity Presence | N/A | N/A
+5 | SAS_MEZZ_PRENT | Entity Presence | N/A | 'Device Removed/Device Absent'
+6 | MAIN_POWER_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+7 | SEL_FULLNESS | System Event | unspecified | 100.000000
+8 | BIOSPOST_TIMEOUT | Platform Alert | N/A | N/A
+9 | POWER_ON_FAIL | Platform Alert | N/A | 'Predictive Failure deasserted'
+10 | FAN1_PRSNT | Entity Presence | N/A | 'Device Inserted/Device Present'
+11 | FAN2_PRSNT | Entity Presence | N/A | 'Device Inserted/Device Present'
+12 | FAN3_PRSNT | Entity Presence | N/A | 'Device Inserted/Device Present'
+13 | FAN4_PRSNT | Entity Presence | N/A | 'Device Inserted/Device Present'
+14 | FAN5_PRSNT | Entity Presence | N/A | 'Device Inserted/Device Present'
+15 | FAN1_TACH1 | Fan | RPM | 3424.000000
+16 | FAN1_TACH2 | Fan | RPM | 3424.000000
+17 | FAN2_TACH1 | Fan | RPM | 3424.000000
+18 | FAN2_TACH2 | Fan | RPM | 3424.000000
+19 | FAN3_TACH1 | Fan | RPM | 3424.000000
+20 | FAN3_TACH2 | Fan | RPM | 3424.000000
+21 | FAN4_TACH1 | Fan | RPM | 3424.000000
+22 | FAN4_TACH2 | Fan | RPM | 3424.000000
+23 | FAN5_TACH1 | Fan | RPM | 3424.000000
+24 | FAN5_TACH2 | Fan | RPM | 3424.000000
+25 | LED_FAN1_FAULT | Platform Alert | N/A | 'OEM Event = 0081h'
+26 | LED_FAN2_FAULT | Platform Alert | N/A | 'OEM Event = 0081h'
+27 | LED_FAN3_FAULT | Platform Alert | N/A | 'OEM Event = 0081h'
+28 | LED_FAN4_FAULT | Platform Alert | N/A | 'OEM Event = 0081h'
+29 | LED_FAN5_FAULT | Platform Alert | N/A | 'OEM Event = 0081h'
+30 | FM_TPM_CARD_PRS | Entity Presence | N/A | 'Device Removed/Device Absent'
+31 | RISER2_PRESENT | Entity Presence | N/A | 'Device Inserted/Device Present'
+32 | RISER1_PRESENT | Entity Presence | N/A | 'Device Inserted/Device Present'
+33 | RISER2_PRESENT_2 | Entity Presence | N/A | 'Device Removed/Device Absent'
+34 | RISER1_PRESENT_3 | Entity Presence | N/A | 'Device Removed/Device Absent'
+35 | RISER1_PRESENT_2 | Entity Presence | N/A | 'Device Removed/Device Absent'
+36 | RISER2_PRESENT_1 | Entity Presence | N/A | 'Device Removed/Device Absent'
+37 | RISER1_PRESENT_1 | Entity Presence | N/A | 'Device Inserted/Device Present'
+38 | PSU1_STATUS | Power Supply | N/A | 'Presence detected'
+39 | PSU2_STATUS | Power Supply | N/A | 'OK'
+40 | P1_PROCHOT | Processor | N/A | 'Limit Not Exceeded'
+41 | P2_PROCHOT | Processor | N/A | 'Limit Not Exceeded'
+42 | PVCCD_P1_VRHOT | Processor | N/A | 'Limit Not Exceeded'
+43 | PVCCP_P1_VRHOT | Processor | N/A | 'Limit Not Exceeded'
+44 | PVCCD_P2_VRHOT | Processor | N/A | 'Limit Not Exceeded'
+45 | PVCCP_P2_VRHOT | Processor | N/A | 'Limit Not Exceeded'
+46 | MLOM_PRESENT | Entity Presence | N/A | 'Device Removed/Device Absent'
+47 | PSU1_PWRGD | Power Supply | N/A | 'State Asserted'
+48 | PSU1_AC_OK | Power Supply | N/A | 'State Asserted'
+49 | PSU2_PWRGD | Power Supply | N/A | N/A
+50 | PSU2_AC_OK | Power Supply | N/A | N/A
+51 | P1_MEM23_MEMHOT | Processor | N/A | 'Limit Not Exceeded'
+52 | P1_MEM01_MEMHOT | Processor | N/A | 'Limit Not Exceeded'
+53 | P2_MEM23_MEMHOT | Processor | N/A | 'Limit Not Exceeded'
+54 | P2_MEM01_MEMHOT | Processor | N/A | 'Limit Not Exceeded'
+55 | LED_PSU_STATUS | Platform Alert | N/A | 'OEM Event = 0012h'
+56 | LED_TEMP_STATUS | Platform Alert | N/A | 'OEM Event = 0012h'
+57 | LED_FAN_STATUS | Platform Alert | N/A | 'OEM Event = 0012h'
+58 | LED_HLTH_STATUS | Platform Alert | N/A | 'OEM Event = 0012h'
+59 | PS_RDNDNT_MODE | Power Supply | N/A | 'Non-redundant:Sufficient Resources from Redundant'
+60 | P1_TEMP_SENS | Temperature | C | 29.000000
+61 | P2_TEMP_SENS | Temperature | C | 29.500000
+62 | RISER1_INLET_TMP | Temperature | C | 37.000000
+63 | RISER2_INLET_TMP | Temperature | C | 31.000000
+64 | RISER1_OUTLETTMP | Temperature | C | 41.000000
+65 | RISER2_OUTLETTMP | Temperature | C | 33.000000
+66 | FP_TEMP_SENSOR | Temperature | C | 26.000000
+67 | HDD1_STATUS | Drive Slot | N/A | 'Drive Presence'
+68 | HDD2_STATUS | Drive Slot | N/A | 'Drive Presence'
+69 | HDD3_STATUS | Drive Slot | N/A | 'OK'
+70 | HDD4_STATUS | Drive Slot | N/A | 'OK'
+71 | HDD5_STATUS | Drive Slot | N/A | 'OK'
+72 | HDD6_STATUS | Drive Slot | N/A | 'OK'
+73 | HDD7_STATUS | Drive Slot | N/A | 'OK'
+74 | HDD8_STATUS | Drive Slot | N/A | 'OK'
+75 | DDR3_P1_A1_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+76 | DDR3_P1_A1_TEMP | Temperature | C | 35.000000
+77 | P1_DIMM_A1_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+78 | DDR3_P1_A2_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+79 | DDR3_P1_A2_TEMP | Temperature | C | 34.000000
+80 | P1_DIMM_A2_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+81 | DDR3_P1_B1_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+82 | DDR3_P1_B1_TEMP | Temperature | C | 38.000000
+83 | P1_DIMM_B1_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+84 | DDR3_P1_B2_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+85 | DDR3_P1_B2_TEMP | Temperature | C | 38.000000
+86 | P1_DIMM_B2_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+87 | DDR3_P1_C1_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+88 | DDR3_P1_C1_TEMP | Temperature | C | 33.000000
+89 | P1_DIMM_C1_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+90 | DDR3_P1_C2_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+91 | DDR3_P1_C2_TEMP | Temperature | C | 33.000000
+92 | P1_DIMM_C2_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+93 | DDR3_P1_D1_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+94 | DDR3_P1_D1_TEMP | Temperature | C | 36.000000
+95 | P1_DIMM_D1_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+96 | DDR3_P1_D2_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+97 | DDR3_P1_D2_TEMP | Temperature | C | 36.000000
+98 | P1_DIMM_D2_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+99 | DDR3_P2_E1_PRS | Entity Presence | N/A | 'Device Removed/Device Absent'
+100 | DDR3_P2_E1_TEMP | Temperature | C | N/A
+101 | P2_DIMM_E1_LED | Platform Alert | N/A | N/A
+102 | DDR3_P2_E2_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+103 | DDR3_P2_E2_TEMP | Temperature | C | 29.000000
+104 | P2_DIMM_E2_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+105 | DDR3_P2_F1_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+106 | DDR3_P2_F1_TEMP | Temperature | C | 34.000000
+107 | P2_DIMM_F1_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+108 | DDR3_P2_F2_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+109 | DDR3_P2_F2_TEMP | Temperature | C | 34.000000
+110 | P2_DIMM_F2_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+111 | DDR3_P2_G1_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+112 | DDR3_P2_G1_TEMP | Temperature | C | 35.000000
+113 | P2_DIMM_G1_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+114 | DDR3_P2_G2_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+115 | DDR3_P2_G2_TEMP | Temperature | C | 36.000000
+116 | P2_DIMM_G2_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+117 | DDR3_P2_H1_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+118 | DDR3_P2_H1_TEMP | Temperature | C | 35.000000
+119 | P2_DIMM_H1_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+120 | DDR3_P2_H2_PRS | Entity Presence | N/A | 'Device Inserted/Device Present'
+121 | DDR3_P2_H2_TEMP | Temperature | C | 34.000000
+122 | P2_DIMM_H2_LED | Platform Alert | N/A | 'OEM Event = 0021h'
+123 | P12V_STBY_V_MOIN | Voltage | V | 12.095000
+124 | P12V_AUX_V_MOIN | Voltage | V | 11.859000
+125 | P5V_AUX_V_MOIN | Voltage | V | 5.218500
+126 | P12V_V_MOIN | Voltage | V | 11.918000
+127 | P5V_V_MOIN | Voltage | V | 5.243000
+128 | P3V3_V_MOIN | Voltage | V | 3.408000
+129 | P1V5_SSB | Voltage | V | 1.489800
+130 | P1V1_SSB | Voltage | V | 1.099800
+131 | P3V3_BAT_V_MOIN | Voltage | V | 3.040000
+132 | PVTT_DDR_AB | Voltage | V | 0.758400
+133 | PVTT_DDR_CD | Voltage | V | 0.758400
+134 | PVTT_DDR_EF | Voltage | V | 0.750500
+135 | PVTT_DDR_GH | Voltage | V | 0.750500
+136 | MLOM_TEMP_SENS | Temperature | C | N/A
+137 | PVTT_P1 | Voltage | V | 0.998400
+138 | PVDDQ_AB | Voltage | V | 1.474200
+139 | PVDDQ_CD | Voltage | V | 1.497600
+140 | PVSA_P1 | Voltage | V | 0.967200
+141 | PVPLL_P1 | Voltage | V | 1.708200
+142 | PVCCP_P1 | Voltage | V | 1.060800
+143 | PVTT_P2 | Voltage | V | 0.998400
+144 | PVSA_P2 | Voltage | V | 0.967200
+145 | PVCCP_P2 | Voltage | V | 1.006200
+146 | PVDDQ_EF | Voltage | V | 1.497600
+147 | PVDDQ_GH | Voltage | V | 1.497600
+148 | PVPLL_P2 | Voltage | V | 1.708200
+149 | POWER_USAGE | Power Supply | W | 160.000000
+150 | PSU1_VOUT | Voltage | V | 11.800000
+151 | PSU1_IOUT | Current | A | 12.000000
+152 | PSU1_POUT | Power Supply | W | 144.000000
+153 | PSU2_VOUT | Voltage | V | N/A
+154 | PSU2_IOUT | Current | A | N/A
+155 | PSU2_POUT | Power Supply | W | N/A
+156 | VICP81E_0_PRS | Entity Presence | N/A | 'Device Removed/Device Absent'
+157 | VICP81E_0_OVRTMP | Add In Card | N/A | N/A
+158 | VICP81E_0_TMP1 | Temperature | C | N/A
+159 | VICP81E_0_TMP2 | Temperature | C | N/A
+160 | VICP81E_0_TMP3 | Temperature | C | N/A
+161 | P1_PRESENT | Entity Presence | N/A | 'Device Inserted/Device Present'
+162 | P2_PRESENT | Entity Presence | N/A | 'Device Inserted/Device Present'
+163 | DDR3_P1_A1_ECC | Memory | err | 0.000000
+164 | DDR3_P1_A2_ECC | Memory | err | 0.000000
+165 | DDR3_P1_B1_ECC | Memory | err | 0.000000
+166 | DDR3_P1_B2_ECC | Memory | err | 0.000000
+167 | DDR3_P1_C1_ECC | Memory | err | 0.000000
+168 | DDR3_P1_C2_ECC | Memory | err | 0.000000
+169 | DDR3_P1_D1_ECC | Memory | err | 0.000000
+170 | DDR3_P1_D2_ECC | Memory | err | 0.000000
+171 | DDR3_P2_E1_ECC | Memory | err | N/A
+172 | DDR3_P2_E2_ECC | Memory | err | 0.000000
+173 | DDR3_P2_F1_ECC | Memory | err | 0.000000
+174 | DDR3_P2_F2_ECC | Memory | err | 0.000000
+175 | DDR3_P2_G1_ECC | Memory | err | 0.000000
+176 | DDR3_P2_G2_ECC | Memory | err | 0.000000
+177 | DDR3_P2_H1_ECC | Memory | err | 0.000000
+178 | DDR3_P2_H2_ECC | Memory | err | 0.000000
+179 | P3V3_AUX | Voltage | V | 3.392000
+180 | P1V8_AUX | Voltage | V | 1.801800
+181 | P1V5_AUX | Voltage | V | 1.521000
+182 | P1V0_AUX | Voltage | V | 0.998400
+183 | P1V1_AUX | Voltage | V | 1.092000
+184 | P0V75_AUX | Voltage | V | 0.750500
+185 | PSU1_PIN | Power Supply | W | 152.000000
+186 | PSU2_PIN | Power Supply | W | N/A
+187 | PSU1_TEMP | Temperature | C | 30.000000
+188 | PSU2_TEMP | Temperature | C | N/A
+189 | PCH_TEMP_SENS | Temperature | C | 44.000000
+190 | P1_THERMTRIP_N | Processor | N/A | 'Limit Not Exceeded'
+191 | P2_THERMTRIP_N | Processor | N/A | 'Limit Not Exceeded'
+192 | PCH_THERMTRIP_N | Processor | N/A | 'Limit Not Exceeded'
+193 | STOR_STATUS | OEM Reserved | N/A | N/A

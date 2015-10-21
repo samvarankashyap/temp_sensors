@@ -1,10 +1,8 @@
-import sqlite3 as lite
 import sys
 import pprint
 import os
 from subprocess import Popen, PIPE
 from datetime import datetime
-con = lite.connect('sensor.db')
 
 #initialise table
 """
@@ -58,31 +56,3 @@ for line in output[1:-2]:
     sensors_json["sensor_reading"]=line[4]
     pp.pprint(sensors_json)
     sensors_list.append(sensors_json)
-
-
-#creating the table if not exists
-with con:
-    cur = con.cursor()
-    cur.execute("DROP TABLE IF EXISTS SensorTable")
-    cur.execute("CREATE TABLE IF NOT EXISTS SensorTable(id INT, name TEXT, sensorgroup TEXT, units TEXT, reading TEXT, Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)")
-
-with con: 
-    cur = con.cursor()
-    for value in sensors_list:
-        query = "INSERT INTO SensorTable VALUES("
-        query += str(value["record_id"])+","
-        query += "'"+str(value["sensor_name"])+"'"+","
-        query += "'"+str(value["sensor_group"])+"'"+","
-        query += "'"+str(value["sensor_units"])+"'"+","
-        query += "'"+str(value["sensor_reading"]).strip("'")+"'"+","
-        query += str(datetime.now())
-        query+= ")"
-        print query
-        cur.execute(query)
-        cur.commit()
-
-
-
-
-#with con:
-    #cur.execute("INSERT INTO Cars VALUES(1,'Audi',52642)")
